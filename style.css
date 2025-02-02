@@ -1,0 +1,512 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Hide overflow to prevent scrolling */
+}
+
+#initial-welcome-page {
+  height: 100vh;
+  width: 100vw; /* Ensure it covers the full viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(images/ludo_bg_2.jpg);
+  padding: 20px;
+  
+}
+
+.glass-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 60rem;
+  height: 25rem;
+  max-width: 100rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  color: #033043;
+  font-weight: bold;
+}
+
+/* Fallback for browsers that do not support backdrop-filter */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Border to create a similar effect */
+}
+
+#scramble {
+  text-align: center;
+  color: yellow;
+  font-family: "Mansalva", cursive;
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.select-players-number {
+  margin-bottom: 4rem;
+}
+
+.select-players-number select {
+  --c: hsl(160deg 80% 50% / calc(0.25 + var(--val) / 125));
+  appearance: none;
+  background: transparent;
+  color: #1cd698;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border: 2px solid #1cd698;
+  border-radius: 1rem;
+  width: 15rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 0.2em 0 hsl(0 0% 0%) inset,
+    -0.1em 0.1em 0.1em -0.1em hsl(0 0% 100% / 0.5),
+    0 0 calc(1em + 0.001em * var(--val)) calc(0.1em + 0.00025em * var(--val))
+      var(--c);
+  transition: box-shadow 0.3s ease;
+}
+
+.select-players-number select:focus {
+  outline: none;
+  box-shadow: 0 0 0.5em 0 hsl(0 0% 0%) inset, 0 0 1em 0.1em var(--c),
+    -0.1em 0.1em 0.2em -0.1em hsl(0 0% 100% / 0.5);
+}
+
+.select-players-number select option {
+  background: #2f363e;
+  color: #1cd698;
+  font-size: 1.5rem;
+}
+
+@property --c {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0000;
+}
+
+.btn-class-name {
+  --primary: 255, 90, 120;
+  --secondary: 150, 50, 60;
+  width: 60px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  outline: 10px solid rgba(var(--primary), 0.5);
+  border-radius: 100%;
+  position: relative;
+  transition: 0.3s;
+}
+
+.btn-class-name .back {
+  background: rgb(var(--secondary));
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-class-name .front {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--primary), 0.6) 20%,
+    rgba(var(--primary)) 50%
+  );
+  box-shadow: 0 0.5em 1em -0.2em rgba(var(--secondary), 0.5);
+  border-radius: 100%;
+  position: absolute;
+  border: 1px solid rgb(var(--secondary));
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: inherit;
+  transform: translateY(-15%);
+  transition: 0.15s;
+  color: rgb(var(--secondary));
+}
+
+.btn-class-name:active .front {
+  transform: translateY(0%);
+  box-shadow: 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#game-page {
+  background-color: #414141;
+}
+
+#main {
+  background: #414141;
+  margin-top: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+#board {
+  background: whitesmoke;
+  border: 5px solid black;
+  width: 650px;
+  height: 650px;
+  flex-direction: column;
+}
+
+#row1 {
+  display: flex;
+  width: 100%;
+  height: 40%;
+}
+
+#row2 {
+  display: flex;
+  width: 100%;
+  height: 20%;
+}
+
+#row3 {
+  display: flex;
+  width: 100%;
+  height: 40%;
+}
+
+#green {
+  width: 40%;
+  background-color: green;
+  padding: 20px;
+}
+
+#yellow {
+  width: 40%;
+  background-color: yellow;
+  padding: 20px;
+}
+
+#red {
+  width: 40%;
+  background-color: red;
+  padding: 20px;
+}
+
+#blue {
+  width: 40%;
+  background-color: blue;
+  padding: 20px;
+}
+
+.inner {
+  border-radius: 20px;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+#upper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+}
+
+#lower {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  padding: 5%;
+}
+
+.g_green {
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+  background-color: green;
+  width: 100%;
+  height: 100%;
+  margin-right: 10%;
+  box-shadow: 3px 3px 3px 3px gray;
+}
+
+.g_yellow {
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+  background-color: yellow;
+  width: 100%;
+  height: 100%;
+  margin-right: 10%;
+  box-shadow: 3px 3px 3px 3px gray;
+}
+
+.g_red {
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  margin-right: 10%;
+  box-shadow: 3px 3px 3px 3px gray;
+}
+
+.g_blue {
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+  margin-right: 10%;
+  box-shadow: 3px 3px 3px 3px gray;
+}
+
+#yellow_move {
+  display: grid;
+  width: 20%;
+  height: 100%;
+  grid-template-columns: 33% 33% 33%;
+}
+
+#red_move {
+  display: grid;
+  width: 20%;
+  height: 100%;
+  grid-template-columns: 33% 33% 33%;
+}
+
+#green_move {
+  display: grid;
+  width: 40%;
+  height: 100%;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
+}
+
+#blue_move {
+  display: grid;
+  width: 40%;
+  height: 100%;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.box-y {
+  background-color: yellow;
+}
+
+.box-g {
+  background-color: green;
+}
+
+.box-b {
+  background-color: blue;
+}
+
+.box-r {
+  background-color: red;
+}
+
+#multicolor {
+  width: 20%;
+  height: 100%;
+  background-image: url(images/finish.png);
+  /*box-shadow: inset 0 25px 10px 0 yellow, inset 0 -25px 10px 0 red,
+    inset 50px 0 50px 0 green, inset 0 0 50px 35px blue;*/
+}
+
+#die {
+  padding: 50px;
+  background-image: url("images/1.png");
+  background-color: rgba(0, 0, 255, 0);
+  background-size: contain;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+#b1,
+#b2,
+#b3,
+#b4 {
+  background-image: linear-gradient(blue, rgb(0, 110, 255));
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px black;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+
+#g1,
+#g2,
+#g3,
+#g4 {
+  background-image: linear-gradient(green, rgb(94, 255, 0));
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px black;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  z-index: 1;
+}
+
+#y1,
+#y2,
+#y3,
+#y4 {
+  background-image: linear-gradient(yellow, rgb(255, 166, 0));
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px black;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  z-index: 1;
+}
+
+#r1,
+#r2,
+#r3,
+#r4 {
+  background-image: linear-gradient(red, rgb(255, 191, 172));
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px black;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: 2px;
+  margin: auto;
+  z-index: 1;
+}
+#r1,
+#b1,
+#g1,
+#y1 {
+  z-index: 1;
+}
+#r2,
+#b2,
+#g2,
+#y2 {
+  z-index: 2;
+}
+#r3,
+#b3,
+#g3,
+#y3 {
+  z-index: 3;
+}
+#r4,
+#b4,
+#g4,
+#y4 {
+  z-index: 4;
+}
+
+#dice {
+  position: absolute; /* Position absolute for horizontal movement */
+  top: 10%; /* Center vertically */
+  left: 10%; /* Initial left position */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  width: 15%;
+}
+
+#p1 {
+  position: absolute;
+  top: 1vh;
+  left: 45vw;
+  color: whitesmoke;
+}
+
+#p2 {
+  position: absolute;
+  top: 15vh;
+  right: 5vw;
+  color: whitesmoke;
+}
+
+.controls {
+  position: absolute;
+  top: 1vh;
+  right: 5vw;
+}
+
+.controls select {
+  --c: hsl(160deg 80% 50% / calc(0.25 + var(--val) / 125));
+  appearance: none;
+  background: transparent;
+  color: whitesmoke;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid whitesmoke;
+  border-radius: 1rem;
+  width: 12rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 0.2em 0 hsl(0 0% 0%) inset,
+    -0.1em 0.1em 0.1em -0.1em hsl(0 0% 100% / 0.5),
+    0 0 calc(1em + 0.001em * var(--val)) calc(0.1em + 0.00025em * var(--val))
+      var(--c);
+  transition: box-shadow 0.3s ease;
+}
+
+.controls select:focus {
+  outline: none;
+  box-shadow: 0 0 0.5em 0 hsl(0 0% 0%) inset, 0 0 1em 0.1em var(--c),
+    -0.1em 0.1em 0.2em -0.1em hsl(0 0% 100% / 0.5);
+}
+
+.controls select option {
+  background: #2f363e;
+  color: #1cd698;
+  font-size: 1rem;
+}
+
+#message {
+  position: absolute;
+  top: 1vh;
+  left: 5vw;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
